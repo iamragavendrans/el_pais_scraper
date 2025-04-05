@@ -1,0 +1,51 @@
+{
+  "win11_chrome": {
+    "bstack:options": {
+      "os": "Windows",
+      "osVersion": "11",
+      "sessionName": "Win11 Chrome",
+      "buildName": "ElPais-Build",
+      "seleniumVersion": "4.17.0"
+    },
+    "browserName": "Chrome",
+    "browserVersion": "latest"
+  },
+  "win10_edge": {
+    "bstack:options": {
+      "os": "Windows",
+      "osVersion": "10",
+      "sessionName": "Win10 Edge",
+      "buildName": "ElPais-Build",
+      "seleniumVersion": "4.17.0"
+    },
+    "browserName": "Edge",
+    "browserVersion": "latest"
+  },
+  "mac_safari": {
+    "bstack:options": {
+      "os": "OS X",
+      "osVersion": "Monterey",
+      "sessionName": "Mac Safari",
+      "buildName": "ElPais-Build",
+      "seleniumVersion": "4.17.0"
+    },
+    "browserName": "Safari",
+    "browserVersion": "latest"
+  },
+  "ios_safari": {
+    "bstack:options": {
+      "deviceName": "iPhone 14",
+      "realMobile": "true",
+      "osVersion": "16"
+    },
+    "browserName": "Safari"
+  },
+  "android_chrome": {
+    "bstack:options": {
+      "deviceName": "Samsung Galaxy S23",
+      "realMobile": "true",
+      "osVersion": "13.0"
+    },
+    "browserName": "Chrome"
+  }
+}
