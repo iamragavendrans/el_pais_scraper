@@ -5,10 +5,11 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 from api.translator import Translator
+from cookie_handler import handle_popups
 from scraper.article_fetcher import ArticleFetcher
-from util.cookie_handler import handle_popups
 from util.language_verifier import LanguageVerifier
 from util.logger import get_logger
+from util.popup_handler import handle_cookie_wall, force_hide_cookie_wall
 from util.print_helper import PrintHelper
 from util.text_analyzer import TextAnalyzer
 
@@ -20,7 +21,10 @@ logger = get_logger()
 @given("I launch the El Pais website")
 def step_launch_el_pais(context):
     context.driver.get("https://elpais.com")
+    handle_cookie_wall(context.driver)
+    force_hide_cookie_wall(context.driver)
     handle_popups(context.driver)
+
     try:
         WebDriverWait(context.driver, 10).until(ec.presence_of_element_located((By.CSS_SELECTOR, "header")))
         logger.info("El Pais homepage loaded.")

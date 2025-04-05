@@ -1,13 +1,15 @@
 import os
 import json
+import time
 from selenium import webdriver
-from selenium.webdriver.edge.options import Options as EdgeOptions
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.remote.webdriver import WebDriver as RemoteWebDriver
+from selenium.webdriver.edge.options import Options as EdgeOptions
 
 def create_driver():
     run_env = os.getenv("RUN_ENV", "local").lower()
     browser_config = os.getenv("BROWSER_CONFIG", "win11_chrome")
+    build_id = os.getenv("BUILD_ID", f"ElPais_Scraper_Build_{int(time.time())}")
 
     if run_env == "browserstack":
         config_path = "features/browserstack_config/capabilities_config.json"
@@ -18,6 +20,8 @@ def create_driver():
             raise Exception(f"BROWSER_CONFIG '{browser_config}' not found in capabilities_config.json")
 
         desired_caps = caps[browser_config]
+        desired_caps["build"] = build_id
+
         username = os.getenv("BROWSERSTACK_USERNAME")
         access_key = os.getenv("BROWSERSTACK_ACCESS_KEY")
 
@@ -26,10 +30,10 @@ def create_driver():
 
         bs_url = f"https://{username}:{access_key}@hub-cloud.browserstack.com/wd/hub"
 
-
         options = ChromeOptions()
         for key, value in desired_caps.items():
             options.set_capability(key, value)
+
         return RemoteWebDriver(command_executor=bs_url, options=options)
 
     else:

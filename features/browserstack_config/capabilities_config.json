@@ -4,18 +4,23 @@
       "os": "Windows",
       "osVersion": "11",
       "sessionName": "Win11 Chrome",
-      "buildName": "ElPais-Build",
       "seleniumVersion": "4.17.0"
     },
     "browserName": "Chrome",
-    "browserVersion": "latest"
+    "browserVersion": "latest",
+    "goog:chromeOptions": {
+      "prefs": {
+        "profile.default_content_setting_values.notifications": 2,
+        "profile.default_content_setting_values.popups": 2
+      },
+      "args": ["--disable-popup-blocking", "--disable-notifications"]
+    }
   },
   "win10_edge": {
     "bstack:options": {
       "os": "Windows",
       "osVersion": "10",
       "sessionName": "Win10 Edge",
-      "buildName": "ElPais-Build",
       "seleniumVersion": "4.17.0"
     },
     "browserName": "Edge",
@@ -26,7 +31,6 @@
       "os": "OS X",
       "osVersion": "Monterey",
       "sessionName": "Mac Safari",
-      "buildName": "ElPais-Build",
       "seleniumVersion": "4.17.0"
     },
     "browserName": "Safari",
@@ -36,16 +40,30 @@
     "bstack:options": {
       "deviceName": "iPhone 14",
       "realMobile": "true",
-      "osVersion": "16"
+      "osVersion": "16",
+      "sessionName": "iOS Safari",
+      "seleniumVersion": "4.17.0"
     },
-    "browserName": "Safari"
+    "browserName": "Safari",
+    "safariAllowPopups": false,
+    "safariIgnoreFraudWarning": true,
+    "safariInitialUrl": "https://elpais.com/"
   },
   "android_chrome": {
     "bstack:options": {
       "deviceName": "Samsung Galaxy S23",
       "realMobile": "true",
-      "osVersion": "13.0"
+      "osVersion": "13.0",
+      "sessionName": "Android Chrome",
+      "seleniumVersion": "4.17.0"
     },
-    "browserName": "Chrome"
+    "browserName": "Chrome",
+    "goog:chromeOptions": {
+      "prefs": {
+        "profile.default_content_setting_values.notifications": 2,
+        "profile.default_content_setting_values.popups": 2
+      },
+      "args": ["--disable-popup-blocking", "--disable-notifications"]
+    }
   }
 }

@@ -11,13 +11,13 @@ def get_logger(name="el_pais"):
     logger.setLevel(logging.INFO)
 
     if not logger.handlers:
-        # File output (non-colored)
+
         file_formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
         file_handler = logging.FileHandler(log_file, mode='w')
         file_handler.setFormatter(file_formatter)
         logger.addHandler(file_handler)
 
-        # Console output (colored)
+
         color_formatter = ColoredFormatter(
             "%(log_color)s%(levelname)s:%(reset)s %(message)s",
             log_colors={
